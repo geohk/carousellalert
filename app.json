@@ -1,7 +1,7 @@
 {
   "name": "Automated Carousell Alerting System",
   "description": "Check for listings, scrapes new listings automatically and alerts you on Telegram",
-  "repository": "https://github.com/2gavy/carousellalert",
+  "repository": "https://github.com/benlui97/carousellalert",
   "logo": "https://storage.googleapis.com/carousell-wordpress-files/1/2019/09/Carousell-logo-square.png",
   "keywords": ["node", "puppeteer", "static", "cron"],
   "stack": "heroku-20",
