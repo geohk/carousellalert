@@ -12,7 +12,7 @@ const job = new CronJob({
 });
 
 async function loadPage(){
-  var link = "https://sg.carousell.com/search/" + encodeURIComponent(process.env.ITEM) + "?sort_by=time_created%2Cdescending"
+  var link = "https://hk.carousell.com/search/" + encodeURIComponent(process.env.ITEM) + "?sort_by=time_created%2Cdescending"
   var page = await context.newPage();
   await page.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36"
@@ -41,7 +41,7 @@ async function loadPage(){
     const thumbnailURL = element.thumbnailURL;
     const seller_username =
       data.Listing.listingsMap[element.listingID].seller.username;
-    const itemURL = ("https://sg.carousell.com/p/" + name.replace(/[^a-zA-Z ]/g, "-") + "-" + listingID).replace(/ /g, "-");
+    const itemURL = ("https://hk.carousell.com/p/" + name.replace(/[^a-zA-Z ]/g, "-") + "-" + listingID).replace(/ /g, "-");
     const isBumper = element.aboveFold[0].component === "active_bump"  //  Lightning icons - Most resellers will not have active bumps
     const isSpotlighter = element.hasOwnProperty('promoted')   //  Purple promoted icons - Most resellers will not have spotlight
 
