@@ -3,6 +3,7 @@ const puppeteer = require("puppeteer");
 
 let prevListings = [];
 const resellers = process.env.RESELLERS.split(", ");
+let only_setller = (process.env.MONITOR_RESELLERS_ONLY);
 let context;
 
 const CronJob = require("cron").CronJob;
@@ -12,7 +13,14 @@ const job = new CronJob({
 });
 
 async function loadPage(){
+
   var link = "https://hk.carousell.com/search/" + encodeURIComponent(process.env.ITEM) + "?sort_by=time_created%2Cdescending"
+
+  if (only_setller !=null)
+  link = "https://www.carousell.com.hk/u/"+encodeURIComponent(process.env.MONITOR_RESELLERS_ONLY)+"/?search="+ encodeURIComponent(process.env.ITEM)
+
+
+  
   var page = await context.newPage();
   await page.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36"
@@ -33,8 +41,14 @@ async function loadPage(){
 
   let listings = [];
 
-  data.SearchListing.listingCards.forEach((element) => {
+var items = data.SearchListing.listingCards
+
+if (only_setller !=null)
+    items = data.ProfileListing.listingCards
+
+  items.forEach((element) => {
     const name = element.belowFold[0].stringContent;
+    console.log(name)
     const price = element.belowFold[1].stringContent;
     const condition = element.belowFold[3].stringContent;
     const listingID = element.listingID;

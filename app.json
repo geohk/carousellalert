@@ -30,11 +30,16 @@
     },
     "ITEM": {
       "description": "Item (Search term) you want to monitor.",
-      "value": "macbook"
+      "value": "iphone"
     },
     "RESELLERS": {
       "description": "[OPTIONAL] Seller usernames you want to filter away. Separated by a comma and space.",
       "value": "sellername1, sellername2",
+      "required": false
+    },
+    "MONITOR_RESELLERS_ONLY": {
+      "description": "[OPTIONAL] if value exist , only monitor this seller",
+      "value": "sellername1",
       "required": false
     },
     "SLEEP_TIME": {
